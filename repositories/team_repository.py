@@ -11,3 +11,7 @@ def save(team):
     id = results[0]['id']
     team.id = id
     return team
+
+def delete_all():
+    sql = "DELETE FROM teams"
+    run_sql(sql)

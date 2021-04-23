@@ -11,3 +11,7 @@ def save(player):
     id = results[0]['id']
     player.id = id
     return player
+
+def delete_all():
+    sql = "DELETE FROM players"
+    run_sql(sql)

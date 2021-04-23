@@ -11,3 +11,7 @@ def save(match):
     id = results[0]['id']
     match.id = id
     return match
+
+def delete_all():
+    sql = "DELETE FROM matches"
+    run_sql(sql)
