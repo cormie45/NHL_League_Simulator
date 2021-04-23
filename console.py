@@ -11,6 +11,9 @@ match_repository.delete_all()
 player_repository.delete_all()
 team_repository.delete_all()
 
+unattached = Team("Unattached", " ", " ", " ")
+team_repository.save(unattached)
+
 # Honda West
 
 team_1 = Team("Colorado Avalanche", "Jared Bednar", "Pepsi Center", "Denver, CO")
@@ -57,7 +60,17 @@ player_repository.save(player_17)
 player_18 = Player("Ryan", "Hartman", 26, team_2, "Right Wing", 0)
 player_repository.save(player_18)
 player_19 = Player("Jonas", "Brodin", 27, team_2, "Defence", 0)
-
+player_repository.save(player_19)
+player_20 = Player("Jared", "Spurgeon", 31, team_2, "Defence", 0)
+player_repository.save(player_20)
+player_21 = Player("Ryan", "Suter", 36, team_2, "Defence", 0)
+player_repository.save(player_21)
+player_22 = Player("Carson", "Soucy", 26, team_2, "Defence", 0)
+player_repository.save(player_22)
+player_23 = Player("Cam", "Talbot", 33, team_2, "Goalkeeper", 0)
+player_repository.save(player_23)
+player_24 = Player("Kaapo", "Kahkonen", 24, team_2, "Goalkeeper", 0)
+player_repository.save(player_24)
 
 team_3 = Team("St. Louis Blues", "Craig Berube", "Enterprise Center", "St. Louis, MO")
 team_repository.save(team_3)
