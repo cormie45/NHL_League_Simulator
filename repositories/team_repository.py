@@ -24,7 +24,7 @@ def select_all():
     return teams
 
 def select(id):
-    team = None:
+    team = None
     sql = "SELECT * FROM teams WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
