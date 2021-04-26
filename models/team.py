@@ -5,3 +5,4 @@ class Team:
         self.coach = coach
         self.stadium = stadium
         self.city = city
+        self.id = id

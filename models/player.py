@@ -7,6 +7,3 @@ class Player:
         self.team = team
         self.position = position
         self.points = points
-
-    def full_name(self):
-        return f"{self.first_name} {self.last_name}"

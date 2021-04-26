@@ -1,14 +1,9 @@
-  
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Users</h1>
+<h1>TEAMS</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-  
-  </tr>
   {% for team in teams %}
   <tr>
     <td><a href="/teams/{{ team.id }}"> {{team.name}} </a></td>

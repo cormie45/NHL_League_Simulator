@@ -30,7 +30,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        team = Team(result['name'], result['coach'], result['stadium'], result['city'])
+        team = Team(result['name'], result['coach'], result['stadium'], result['city'], result['id'])
     return team
 
 def players(team):

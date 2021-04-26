@@ -1,14 +1,15 @@
 DROP TABLE IF EXISTS matches;
-DROP TABLE IF EXISTS teams;
 DROP TABLE IF EXISTS players;
+DROP TABLE IF EXISTS teams;
+
 -- DROP TABLE IF EXISTS leagues;
 
 CREATE TABLE teams (
-    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     coach VARCHAR(255),
     stadium VARCHAR(255),
-    city VARCHAR(255)
+    city VARCHAR(255),
+    id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE players (

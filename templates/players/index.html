@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>PLAYERS</h1>
+
+<table>
+  {% for player in players %}
+  <tr>
+    <td><a href="/players/{{ player.id }}"> TEAM: {{player.team.name}}  {{player.first_name}} {{player.last_name}}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
