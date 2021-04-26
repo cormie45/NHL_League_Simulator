@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/players/{{ player.id }}" method="POST">
+    <div class="newfirstname">
+        <label for="newfirstname">First Name:</label>
+        <input type="text" name="newfirstname" id="newfirstname" value="{{ player.first_name }}">
+    </div>
+    <div class="newlastname">
+        <label for="newlastname">Last Name:</label>
+        <input type="text" name="newlastname" id="newlastname" value="{{ player.last_name }}">
+    </div>
+    <div class="newage">
+        <label for="newage">Age:</label>
+        <input type="text" name="newage" id="newage" value="{{ player.age }}">
+    </div>
+        <label for="newposition">Position:</label>
+        <select name="newposition" id="newposition">
+            <option value="Goalkeeper">Goalkeeper</option>
+            <option value="Defence">Defence</option>
+            <option value="Right Wing">Right Wing</option>
+            <option value="Left Wing">Left Wing</option>
+            <option value="Center">Center</option>
+        </select>
+        <br><br>
+    <input type="submit" value="Update Player">
+</form>
+{% endblock %}

@@ -7,3 +7,4 @@ class Match:
         self.away_team = away_team
         self.away_team_score = away_team_score
         self.winner = winner
+        self.id = id

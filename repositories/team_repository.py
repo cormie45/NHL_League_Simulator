@@ -19,7 +19,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        team = Team(row['name'], row['coach'], row['stadium'], row['city'])
+        team = Team(row['name'], row['coach'], row['stadium'], row['city'], row['id'])
         teams.append(team)
     return teams
 
@@ -64,7 +64,7 @@ def update(id):
 
 def delete(id):
     sql = "DELETE FROM teams WHERE id = %s"
-    values[id]
+    values = [id]
     run_sql(sql, values)
 
 def delete_all():

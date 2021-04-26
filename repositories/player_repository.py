@@ -19,9 +19,9 @@ def select_all():
     sql = "SELECT * FROM players"
     results = run_sql(sql)
 
-    for row in results:
-        team = team_repository.select(row['team_id'])
-        player = Player(row['first_name'], row['last_name'], row['age'], team, row['position'], row['points'])
+    for result in results:
+        team = team_repository.select(result['team_id'])
+        player = Player(result['first_name'], result['last_name'], result['age'], team, result['position'], result['points'], result['id'])
         players.append(player)
     return players
 
@@ -33,13 +33,14 @@ def select(id):
 
     if result is not None:
         team = team_repository.select(result['team_id'])
-        player = Player(result['first_name'], result['last_name'], result['age'], team, result['position'], result['points'])
+        player = Player(result['first_name'], result['last_name'], result['age'], team, result['position'], result['points'], result['id'])
     return player
 
 def update(player):
     sql = "UPDATE players SET (first_name, last_name, age, team_id, position, points) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [player.first_name, player.last_name, player.age, player.team.id, player.position, player.points]
+    values = [player.first_name, player.last_name, player.age, player.team.id, player.position, player.points, player.id]
     run_sql(sql, values)
+    return player
 
 def delete(id):
     sql = "DELETE FROM players WHERE id = %s"

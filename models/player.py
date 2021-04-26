@@ -7,3 +7,4 @@ class Player:
         self.team = team
         self.position = position
         self.points = points
+        self.id = id

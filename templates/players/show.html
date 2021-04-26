@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ player.first_name }} {{ player.last_name }}</h2>
+<h4>{{ player.age }}</h4>
+<h4>{{ player.team.name }}</h4>
+<h4>{{ player.position }}</h4>
+<h4>{{ player.points }}</h4>
+
+<p><a href="/players/{{player.id}}/edit">Edit</a></p>
+<form action="/players/{{ player.id }}/delete" method="POST">
+    <input type="submit" value="Delete">
+</form>
+{% endblock %}

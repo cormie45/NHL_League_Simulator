@@ -13,23 +13,23 @@ CREATE TABLE teams (
 );
 
 CREATE TABLE players (
-    id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     age INT,
     team_id INT REFERENCES teams(id),
     position VARCHAR(255),
-    points INT
+    points INT,
+    id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE matches (
-    id SERIAL PRIMARY KEY,
     date VARCHAR(255),
     home_team INT REFERENCES teams(id),
     home_team_score INT,
     away_team INT REFERENCES teams(id),
     away_team_score INT,
-    winner VARCHAR(255)
+    winner VARCHAR(255),
+    id SERIAL PRIMARY KEY
 );
 
 -- CREATE TABLE leagues (

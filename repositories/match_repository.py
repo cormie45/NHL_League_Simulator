@@ -22,7 +22,7 @@ def select_all():
     for row in results:
         home_team = team_repository.select(row['home_team_id'])
         away_team = team_repository.select(row['away_team_id'])
-        match = Match(row['date'], home_team, row['home_team_score'], away_team, row['away_team_score'], row['winner'])
+        match = Match(row['date'], home_team, row['home_team_score'], away_team, row['away_team_score'], row['winner'], row['id'])
         matches.append(match)
     return matches
 
@@ -35,7 +35,7 @@ def select(id):
     if result is not None:
         home_team = team_repository.select(result['home_team_id'])
         away_team = team_repository.select(result['away_team_id'])
-        match = Match(result['date'], home_team, result['home_team_score'], away_team, result['away_team_score'], result['winner'])
+        match = Match(result['date'], home_team, result['home_team_score'], away_team, result['away_team_score'], result['winner'], result['id'])
     return match
 
 def update(match):
