@@ -84,6 +84,7 @@
             {% endif %}
         {% endfor %}
     </select>
+    <label for="leftwing1">1st Line Left Wing</label>
     <select name="leftwing1" id="leftwing1" required>
         {% for player in players %}
             {% if player.position == "Left Wing" %}
@@ -91,6 +92,7 @@
             {% endif %}
         {% endfor %}
     </select>
+    <label for="leftwing2">2nd Line Left Wing</label>
     <select name="leftwing2" id="leftwing2" required>
         {% for player in players %}
             {% if player.position == "Left Wing" %}
@@ -98,6 +100,7 @@
             {% endif %}
         {% endfor %}
     </select>
+    <label for="center1">1st Line Center</label>
     <select name="center1" id="center1" required>
         {% for player in players %}
             {% if player.position == "Center" %}
@@ -105,6 +108,7 @@
             {% endif %}
         {% endfor %}
     </select>
+    <label for="center2">2nd Line Center</label>
     <select name="center2" id="center2" required>
         {% for player in players %}
             {% if player.position == "Center" %}

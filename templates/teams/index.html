@@ -5,9 +5,11 @@
 
 <table>
   {% for team in teams %}
+  {% if team.id != 17 %}
   <tr>
     <td><a href="/teams/{{ team.id }}"> {{team.name}} </a></td>
   </tr>
+  {% endif %}
   {% endfor %}
 </table>
 {% endblock %}
