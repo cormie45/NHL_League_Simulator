@@ -6,8 +6,8 @@ from models.match import Match
 import repositories.team_repository as team_repository
 
 def save(match):
-    sql = "INSERT INTO matches (date, home_team_id, home_team_score, away_team_id, away_team_score, winner) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [match.date, match.home_team.id, match.home_team_score, match.away_team.id, match.away_team_score, match.winner]
+    sql = "INSERT INTO matches (home_team_id, home_first_goals, home_first_scorers, home_second_goals, home_second_scorers, home_third_goals, home_third_scorers, home_team_score, away_team_id, away_first_goals, away_first_scorers, away_second_goals, away_second_scorers, away_third_goals, away_third_scorers, away_team_score, winner) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    values = [match.home_team.id, match.home_first_goals, match.home_first_scorers, match.home_second_goals, match.home_second_scorers, match.home_third_goals, match.home_third_scorers, match.home_team_score, match.away_team.id, match.away_first_goals, match.away_first_scorers, match.away_second_goals, match.away_second_scorers, match.away_third_goals, match.away_third_scorers, match.away_team_score, match.winner]
     results = run_sql(sql, values)
     id = results[0]['id']
     match.id = id
