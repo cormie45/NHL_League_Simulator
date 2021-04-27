@@ -36,7 +36,6 @@ def generator(teams):
 def simulate(fixtures):
     for fixture in fixtures:
         for game in fixture:
-            # pdb.set_trace()
             (home_id, away_id) = game
             home_team_id = int(home_id)
             home_team = team_repository.select(home_team_id)
@@ -67,18 +66,18 @@ def simulate(fixtures):
             else:
                 winner = None
 
-        str_home_first_scorers = ''.join(home_first_scorers)
-        str_home_second_scorers = ''.join(home_second_scorers)
-        str_home_third_scorers = ''.join(home_third_scorers)
-        str_away_first_scorers = ''.join(away_first_scorers)
-        str_away_second_scorers = ''.join(away_second_scorers)
-        str_away_third_scorers = ''.join(away_third_scorers)
+            str_home_first_scorers = ''.join(home_first_scorers)
+            str_home_second_scorers = ''.join(home_second_scorers)
+            str_home_third_scorers = ''.join(home_third_scorers)
+            str_away_first_scorers = ''.join(away_first_scorers)
+            str_away_second_scorers = ''.join(away_second_scorers)
+            str_away_third_scorers = ''.join(away_third_scorers)
 
-        pdb.set_trace()
+            # pdb.set_trace()
 
-        match = Match(home_team, home_first_goals, str_home_first_scorers, home_second_goals, str_home_second_scorers, home_third_goals, str_home_third_scorers, home_team_score, away_team, away_first_goals, str_away_first_scorers, away_second_goals, str_away_second_scorers, away_third_goals, str_away_third_scorers, away_team_score, winner)
-        match_repository.save(match)
-        return match
+            match = Match(home_team, home_first_goals, str_home_first_scorers, home_second_goals, str_home_second_scorers, home_third_goals, str_home_third_scorers, home_team_score, away_team, away_first_goals, str_away_first_scorers, away_second_goals, str_away_second_scorers, away_third_goals, str_away_third_scorers, away_team_score, winner)
+            match_repository.save(match)
+    return match
 
 def generate_score(team):
     players = team_repository.players(team)
