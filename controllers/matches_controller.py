@@ -41,5 +41,5 @@ def run_season():
     teams = [team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8, team_9, team_10, team_11, team_12, team_13, team_14, team_15, team_16]
     fixtures = generator(teams)
     results = simulate(fixtures)
-    
-    return render_template("matches/run.html", fixtures=fixtures)
+
+    return render_template("matches/run.html", fixtures=fixtures, results=results)
