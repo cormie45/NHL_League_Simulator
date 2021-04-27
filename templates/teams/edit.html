@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/teams" method="POST">
+    <div class="name">
+        <label for="name">Team Name:</label>
+        <input type="text" name="name" id="name" value="{{ team.name }}">
+    </div>
+    <div class="coach">
+        <label for="coach">Head Coach:</label>
+        <input type="text" name="coach" id="coach" value="{{ team.coach }}">
+    </div>
+    <div class="stadium">
+        <label for="stadium">Stadium:</label>
+        <input type="text" name="stadium" id="stadium" value="{{ team.stadium }}">
+    </div>
+    <div class="city">
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city" value="{{ team.city }}">
+    </div>
+</form>
+{% endblock %}
