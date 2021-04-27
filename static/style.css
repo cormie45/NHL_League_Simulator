@@ -2,7 +2,7 @@
 body {
     background-size: cover;
     background-repeat: no-repeat;
-    color: #F6F4F3;
+    color: black;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     padding: 0px;
     margin: 0px;
@@ -16,7 +16,7 @@ body {
   
   h1 {
     font-size: 1.8em;
-    color: #E1DABD;
+    color:  black;
     margin-bottom: 20px;
   }
   

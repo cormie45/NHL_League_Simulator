@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/players/{{ player.id }}" method="POST">
+<form action="/players" method="POST">
     <div class="firstname">
         <label for="firstname">First Name:</label>
-        <input type="text" name="firstname" id="firstname" value="{{ player.first_name }}">
+        <input type="text" name="firstname" id="firstname">
     </div>
     <div class="lastname">
         <label for="lastname">Last Name:</label>
-        <input type="text" name="lastname" id="lastname" value="{{ player.last_name }}">
+        <input type="text" name="lastname" id="lastname">
     </div>
     <div class="age">
         <label for="age">Age:</label>

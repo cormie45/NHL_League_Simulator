@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="run" method="POST">
+<label for="team1">Team 1: </label>
+<select name="team1" id="team1">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team2">Team 2: </label>
+<select name="team2" id="team2">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team3">Team 3: </label>
+<select name="team3" id="team3">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team4">Team 4: </label>
+<select name="team4" id="team4">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team5">Team 5: </label>
+<select name="team5" id="team5">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team6">Team 6: </label>
+<select name="team6" id="team6">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team7">Team 7: </label>
+<select name="team7" id="team7">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team8">Team 8: </label>
+<select name="team8" id="team8">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team9">Team 9: </label>
+<select name="team9" id="team9">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team10">Team 10: </label>
+<select name="team10" id="team10">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team11">Team 11: </label>
+<select name="team11" id="team11">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team12">Team 12: </label>
+<select name="team12" id="team12">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team13">Team 13: </label>
+<select name="team13" id="team13">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team14">Team 14: </label>
+<select name="team14" id="team14">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team15">Team 15: </label>
+<select name="team15" id="team15">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<label for="team16">Team 16: </label>
+<select name="team16" id="team16">
+    {% for team in teams %}
+        {% if team.id != 17 %}
+            <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<br><br>
+<input type="submit" value="Run League">
+</form>
+
+{% endblock %}

@@ -1,3 +1,4 @@
+import random
 class Match:
 
     def __init__(self, date, home_team, home_team_score, away_team, away_team_score, winner, id=None):
