@@ -21,7 +21,7 @@
         <br><br>
 
     <label for="startinggoalkeeper">Starting Goalkeeper</label>
-    <select name="startinggoalkeeper" id="startinggoalkeeper">
+    <select name="startinggoalkeeper" id="startinggoalkeeper" required>
         {% for player in players %}
             {% if player.position == "Goalkeeper" %}
                 <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
@@ -29,9 +29,85 @@
         {% endfor %}
     </select>
     <label for="backupgoalkeeper">Backup Goalkeeper</label>
-    <select name="backupgoalkeeper" id="backupgoalkeeper">
+    <select name="backupgoalkeeper" id="backupgoalkeeper" required>
         {% for player in players %}
             {% if player.position == "Goalkeeper" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <label for="defence1">1st Line Defence</label>
+    <select name="defence1" id="defence1" required>
+        {% for player in players %}
+            {% if player.position == "Defence" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <label for="defence2">1st Line Defence</label>
+    <select name="defence2" id="defence2" required>
+        {% for player in players %}
+            {% if player.position == "Defence" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <label for="defence3">2nd Line Defence</label>
+    <select name="defence3" id="defence3" required>
+        {% for player in players %}
+            {% if player.position == "Defence" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <label for="defence4">2nd Line Defence</label>
+    <select name="defence4" id="defence4" required>
+        {% for player in players %}
+            {% if player.position == "Defence" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <label for="rightwing1">1st Line Right Wing</label>
+    <select name="rightwing1" id="rightwing1" required>
+        {% for player in players %}
+            {% if player.position == "Right Wing" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <label for="rightwing2">2nd Line Right Wing</label>
+    <select name="rightwing2" id="rightwing2" required>
+        {% for player in players %}
+            {% if player.position == "Right Wing" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <select name="leftwing1" id="leftwing1" required>
+        {% for player in players %}
+            {% if player.position == "Left Wing" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <select name="leftwing2" id="leftwing2" required>
+        {% for player in players %}
+            {% if player.position == "Left Wing" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <select name="center1" id="center1" required>
+        {% for player in players %}
+            {% if player.position == "Center" %}
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <select name="center2" id="center2" required>
+        {% for player in players %}
+            {% if player.position == "Center" %}
                 <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
             {% endif %}
         {% endfor %}
