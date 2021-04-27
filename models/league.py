@@ -35,7 +35,7 @@ def generator(teams):
 def simulate(fixtures):
     for fixture in fixtures:
         for game in fixture:
-            pdb.set_trace()
+            # pdb.set_trace()
             (home_id, away_id) = game
             home_team_id = int(home_id)
             home_team = team_repository.select(home_team_id)
