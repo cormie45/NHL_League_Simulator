@@ -73,12 +73,11 @@ def simulate(fixtures):
             str_away_second_scorers = ''.join(away_second_scorers)
             str_away_third_scorers = ''.join(away_third_scorers)
 
-            # pdb.set_trace()
-
             match = Match(home_team, home_first_goals, str_home_first_scorers, home_second_goals, str_home_second_scorers, home_third_goals, str_home_third_scorers, home_team_score, away_team, away_first_goals, str_away_first_scorers, away_second_goals, str_away_second_scorers, away_third_goals, str_away_third_scorers, away_team_score, winner)
             match_repository.save(match)
     return match
 
+# Make generate_score communicate with simulate
 def generate_score(team):
     players = team_repository.players(team)
     potential_score = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 3, 0, 0, 4]
