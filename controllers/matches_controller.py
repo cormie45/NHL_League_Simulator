@@ -2,7 +2,7 @@ from flask import Blueprint, Flask, render_template, redirect, request
 from models.match import Match
 from models.team import Team
 from models.player import Player
-from models.league import generator, simulate
+from models.simulate import generator, simulate
 import repositories.match_repository as match_repository
 import repositories.team_repository as team_repository
 import repositories.player_repository as player_repository
