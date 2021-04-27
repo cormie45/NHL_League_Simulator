@@ -93,6 +93,11 @@ def create_team():
     player_repository.update(center_2)
     return redirect("/teams")
 
+@teams_blueprint.route("/teams/<id>/edit")
+def edit_team(id):
+    team = team_repository.select(id)
+    return render_template("teams/edit.html", team=team)
+
 @teams_blueprint.route("/teams/<id>/delete", methods=["POST"])
 def delete_team(id):
     current_team = team_repository.select(id)
