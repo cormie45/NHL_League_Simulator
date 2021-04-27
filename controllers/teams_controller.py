@@ -21,6 +21,7 @@ def show_team(id):
 def new_team():
     unattached = team_repository.select(17)
     players = team_repository.players(unattached)
+    pdb.set_trace()
     return render_template("teams/new.html", players=players)
 
 @teams_blueprint.route("/teams", methods=['POST'])
@@ -33,7 +34,7 @@ def create_team():
     team_repository.save(new_team)
 
     starting_goalkeeper_id = request.form['startinggoalkeeper']
-    pdb.set_trace()
+    # pdb.set_trace()
     starting_goalkeeper = player_repository.select(int(starting_goalkeeper_id))
     starting_goalkeeper.team = new_team
     player_repository.update(starting_goalkeeper)

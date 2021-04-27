@@ -24,7 +24,7 @@
     <select name="startinggoalkeeper" id="startinggoalkeeper">
         {% for player in players %}
             {% if player.position == "Goalkeeper" %}
-                <option value="{{ player.id }}">{{ player.id }}</option>
+                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
             {% endif %}
         {% endfor %}
     </select>
