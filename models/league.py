@@ -1,3 +1,4 @@
+import pdb
 import random
 from models.team import Team
 from models.player import Player
@@ -33,38 +34,41 @@ def generator(teams):
 
 def simulate(fixtures):
     for fixture in fixtures:
-        home_team_id = int(fixture[0])
-        home_team = team_repository.select(home_team_id)
-        generate_score(home_team)
-        home_first_goals = first_period_goals
-        home_first_scorers = first_period_scorers
-        home_second_goals = second_period_goals
-        home_second_scorers = second_period_scorers
-        home_third_goals = third_period_goals
-        home_third_scorers = third_period_scorers
-        home_team_score = home_first_goals + home_second_goals + home_third_goals
+        for game in fixture:
+            pdb.set_trace()
+            (home_id, away_id) = game
+            home_team_id = int(home_id)
+            home_team = team_repository.select(home_team_id)
+            generate_score(home_team)
+            home_first_goals = first_period_goals
+            home_first_scorers = first_period_scorers
+            home_second_goals = second_period_goals
+            home_second_scorers = second_period_scorers
+            home_third_goals = third_period_goals
+            home_third_scorers = third_period_scorers
+            home_team_score = home_first_goals + home_second_goals + home_third_goals
 
-        away_team_id = int(fixture[1])
-        away_team = team_repository.select(away_team_id)
-        generate_score(away_team)
-        away_first_goals = first_period_goals
-        away_first_scorers = first_period_scorers
-        away_second_goals = second_period_goals
-        away_second_scorers = second_period_scorers
-        away_third_goals = third_period_goals
-        away_third_scorers = third_period_scorers
-        away_team_score = away_first_goals + away_second_goals + away_third_goals
+            away_team_id = int(away_id)
+            away_team = team_repository.select(away_team_id)
+            generate_score(away_team)
+            away_first_goals = first_period_goals
+            away_first_scorers = first_period_scorers
+            away_second_goals = second_period_goals
+            away_second_scorers = second_period_scorers
+            away_third_goals = third_period_goals
+            away_third_scorers = third_period_scorers
+            away_team_score = away_first_goals + away_second_goals + away_third_goals
 
-        if home_team_score > away_team_score:
-            winner = home_team
-        elif home_team_score < away_team_score:
-            winner = away_team
-        else:
-            winner = None
-        
-        match = Match(home_team, home_first_goals, home_first_scorers, home_second_goals, home_second_scorers, home_third_goals, home_third_scorers, home_team_score, away_team, away_first_goals, away_first_scorers, away_second_goals, away_second_scorers, away_third_goals, away_third_scorers, away_team_score, winner)
-        match_repository.save(match)
-        return match
+            if home_team_score > away_team_score:
+                winner = home_team
+            elif home_team_score < away_team_score:
+                winner = away_team
+            else:
+                winner = None
+            
+            match = Match(home_team, home_first_goals, home_first_scorers, home_second_goals, home_second_scorers, home_third_goals, home_third_scorers, home_team_score, away_team, away_first_goals, away_first_scorers, away_second_goals, away_second_scorers, away_third_goals, away_third_scorers, away_team_score, winner)
+            match_repository.save(match)
+            return match
 
 def generate_score(team):
     players = team_repository.players(team)
