@@ -23,7 +23,7 @@ CREATE TABLE players (
 );
 
 CREATE TABLE matches (
-    home_team INT REFERENCES teams(id),
+    home_team_id INT REFERENCES teams(id),
     home_first_goals INT,
     home_first_scorers VARCHAR(255),
     home_second_goals INT,
@@ -31,7 +31,7 @@ CREATE TABLE matches (
     home_third_goals INT,
     home_third_scorers VARCHAR(255),
     home_team_score INT,
-    away_team INT REFERENCES teams(id),
+    away_team_id INT REFERENCES teams(id),
     away_first_goals INT,
     away_first_scorers VARCHAR(255),
     away_second_goals INT,

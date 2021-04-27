@@ -66,8 +66,17 @@ def simulate(fixtures):
                 winner = away_team
             else:
                 winner = None
-            
-        match = Match(home_team, home_first_goals, home_first_scorers, home_second_goals, home_second_scorers, home_third_goals, home_third_scorers, home_team_score, away_team, away_first_goals, away_first_scorers, away_second_goals, away_second_scorers, away_third_goals, away_third_scorers, away_team_score, winner)
+
+        str_home_first_scorers = ''.join(home_first_scorers)
+        str_home_second_scorers = ''.join(home_second_scorers)
+        str_home_third_scorers = ''.join(home_third_scorers)
+        str_away_first_scorers = ''.join(away_first_scorers)
+        str_away_second_scorers = ''.join(away_second_scorers)
+        str_away_third_scorers = ''.join(away_third_scorers)
+
+        pdb.set_trace()
+
+        match = Match(home_team, home_first_goals, str_home_first_scorers, home_second_goals, str_home_second_scorers, home_third_goals, str_home_third_scorers, home_team_score, away_team, away_first_goals, str_away_first_scorers, away_second_goals, str_away_second_scorers, away_third_goals, str_away_third_scorers, away_team_score, winner)
         match_repository.save(match)
         return match
 
@@ -125,55 +134,54 @@ def generate_score(team):
     second_period_scorers = []
     if second_period_goals == 1:
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
     elif second_period_goals == 2:
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
     elif second_period_goals == 3:
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
     elif second_period_goals == 4:
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        second_period_scorers.append(scorer)
+        second_period_scorers.append(scorer.id)
 
     third_period_goals = random.choice(potential_score)
     third_period_scorers = []
     if third_period_goals == 1:
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
     elif third_period_goals == 2:
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
     elif third_period_goals == 3:
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
     elif third_period_goals == 4:
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        third_period_scorers.append(scorer)
+        third_period_scorers.append(scorer.id)
 
-    pdb.set_trace()
     return first_period_goals, second_period_goals, third_period_goals, first_period_scorers, second_period_scorers, third_period_scorers
