@@ -41,7 +41,7 @@ player_repository.save(player_11)
 player_12 = Player("Pavel", "Francouz", 30, team_1, "Goalkeeper", 0)
 player_repository.save(player_12)
 
-team_2 = Team("Minnesota Wild", "Dean EVason", "Xcel Energy Center", "St. Paul, MN")
+team_2 = Team("Minnesota Wild", "Dean Evason", "Xcel Energy Center", "St. Paul, MN")
 team_repository.save(team_2)
 
 player_13 = Player("Joel", "Eriksson Ek", 24, team_2, "Center", 0)
