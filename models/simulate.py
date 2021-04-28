@@ -72,4 +72,7 @@ def generate_score():
 def generate_goalscorers(team, goals):
     players = team_repository.players(team)
     scorers = [random.choice(players) for i in range(goals)]
+    for scorer in scorers:
+        scorer.points += 1
+        player_repository.update(scorer)
     return scorers
