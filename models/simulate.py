@@ -83,5 +83,13 @@ def generate_goalscorers(team, goals):
     return scorers
 
 def generate_goals(match, home_players, away_players, period):
+    goals = []
     for player in home_players:
-        goal = G
+        goal = Goal(match, player, period)
+        goal_repository.save(goal)
+        goals.append(goal)
+    for player in away_players:
+        goal = Goal(match, player, period)
+        goal_repository.save(goal)
+        goals.append(goal)
+    return goals
