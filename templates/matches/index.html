@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% for result in results %}
+<tr>
+    <td><a href="/matches/{{ match.id }}"> {{match.home_team.name}} Vs {{ match.away_team.name }}</a></td>
+</tr>
+{% endfor %}
 {% endblock %}

@@ -4,11 +4,17 @@ from db.run_sql import run_sql
 from models.team import Team
 from models.player import Player
 from models.match import Match
+from models.goal import Goal
 import repositories.team_repository as team_repository
+import repositories.player_repository as player_repository
 
 def save(match):
     sql = "INSERT INTO matches (home_team_id, home_first_goals, home_second_goals, home_third_goals, home_team_score, away_team_id, away_first_goals, away_second_goals, away_third_goals, away_team_score, winner) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [match.home_team.id, match.home_first_goals, match.home_second_goals, match.home_third_goals, match.home_team_score, match.away_team.id, match.away_first_goals, match.away_second_goals, match.away_third_goals, match.away_team_score, match.winner]
+    winner_id = None
+    if match.winner:
+        winner_id = match.winner.id
+
+    values = [match.home_team.id, match.home_first_goals, match.home_second_goals, match.home_third_goals, match.home_team_score, match.away_team.id, match.away_first_goals, match.away_second_goals, match.away_third_goals, match.away_team_score, winner_id]
     results = run_sql(sql, values)
     id = results[0]['id']
     match.id = id
@@ -36,8 +42,20 @@ def select(id):
     if result is not None:
         home_team = team_repository.select(result['home_team_id'])
         away_team = team_repository.select(result['away_team_id'])
-        match = Match(home_team, result['home_first-goals'], result['home_second_goals'], result['home_third_goals'], result['home_team_score'], away_team, result['away_first-goals'], result['away_second_goals'], result['away_third_goals'],  result['away_team_score'], result['winner'], result['id'])
+        match = Match(home_team, result['home_first_goals'], result['home_second_goals'], result['home_third_goals'], result['home_team_score'], away_team, result['away_first_goals'], result['away_second_goals'], result['away_third_goals'],  result['away_team_score'], result['winner'], result['id'])
     return match
+
+def goals(match, period):
+    select_period = period
+    sql = "SELECT * FROM goals WHERE match_id = %s AND period = %s"
+    values = [match.id, select_period]
+    results = run_sql(sql, values)
+    goals = []
+    for row in results:
+        player = player_repository.select(row['player_id'])
+        goal = Goal(match, player, row['period'], row['id'])
+        goals.append(goal)
+    return goals
 
 def update(match):
     sql = "UPDATE matches SET (home_team_id, home_first_goals, home_second_goals, home_third_goals, home_team_score, away_team_id, away_first_goals, away_second_goals, away_third_goals, away_team_score, winner) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"

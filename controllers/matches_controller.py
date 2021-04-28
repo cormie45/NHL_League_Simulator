@@ -42,4 +42,4 @@ def run_season():
     fixtures = generate_fixtures(teams)
     results = simulate_league(fixtures)
 
-    return render_template("matches/run.html", fixtures=fixtures, results=results)
+    return render_template("matches/index.html", results=results)

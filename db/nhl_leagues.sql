@@ -32,7 +32,7 @@ CREATE TABLE matches (
     away_second_goals INT,
     away_third_goals INT,
     away_team_score INT,
-    winner VARCHAR(255),
+    winner INT REFERENCES teams(id),
     id SERIAL PRIMARY KEY
 );
 
