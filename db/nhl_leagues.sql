@@ -24,26 +24,21 @@ CREATE TABLE players (
 CREATE TABLE matches (
     home_team_id INT REFERENCES teams(id),
     home_first_goals INT,
-    str_home_first_scorers VARCHAR(255),
     home_second_goals INT,
-    str_home_second_scorers VARCHAR(255),
     home_third_goals INT,
-    str_home_third_scorers VARCHAR(255),
     home_team_score INT,
-    away_team_id INT REFERENCES teams(id),
     away_first_goals INT,
-    str_away_first_scorers VARCHAR(255),
     away_second_goals INT,
-    str_away_second_scorers VARCHAR(255),
     away_third_goals INT,
-    str_away_third_scorers VARCHAR(255),
     away_team_score INT,
     winner VARCHAR(255),
     id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE goals (
-
+    id SERIAL PRIMARY KEY,
+    match_id SERIAL REFERENCES matches(id),
+    player_id SERIAL REFERENCES players(id)
 );
 
 -- );
