@@ -61,6 +61,7 @@ def simulate_league(fixtures):
                 winner = None
             
             match = Match(home_team, home_first_goals, home_second_goals, home_third_goals, home_team_score, away_team, away_first_goals, away_second_goals, away_third_goals, away_team_score, winner)
+            pdb.set_trace()
             match_repository.save(match)
             first_period_goals = generate_goals(match, home_first_scorers, away_first_scorers, 1)
             second_period_goals = generate_goals(match, home_second_scorers, away_second_scorers, 2)
@@ -76,7 +77,22 @@ def generate_score():
 
 def generate_goalscorers(team, goals):
     players = team_repository.players(team)
-    scorers = [random.choice(players) for i in range(goals)]
+    possible_scorers = []
+    for player in players:
+        if player.position == "Defence":
+            possible_scorers.append(player)
+        elif player.position == "Right Wing" or player.position == "Left Wing":
+            possible_scorers.append(player)
+            possible_scorers.append(player)
+            possible_scorers.append(player)
+        elif player.position == "Center":
+            possible_scorers.append(player)
+            possible_scorers.append(player)
+            possible_scorers.append(player)
+            possible_scorers.append(player)
+            possible_scorers.append(player)
+
+    scorers = [random.choice(possible_scorers) for i in range(goals)]
     for scorer in scorers:
         scorer.points += 1
         player_repository.update(scorer)

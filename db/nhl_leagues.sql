@@ -27,6 +27,7 @@ CREATE TABLE matches (
     home_second_goals INT,
     home_third_goals INT,
     home_team_score INT,
+    away_team_id INT REFERENCES teams(id),
     away_first_goals INT,
     away_second_goals INT,
     away_third_goals INT,
