@@ -60,8 +60,8 @@ def simulate_league(fixtures):
             else:
                 winner = None
             
-            match = Match(home_team, home_first_goals, home_first_scorers, home_second_goals, home_second_scorers, home_third_goals, home_third_scorers, home_team_score, away_team, away_first_goals, away_first_scorers, away_second_goals, away_second_scorers, away_third_goals, away_third_scorers, away_team_score, winner)
-            # match_repository.save(match)
+            match = Match(home_team, home_first_goals, home_second_goals, home_third_goals, home_team_score, away_team, away_first_goals, away_second_goals, away_third_goals, away_team_score, winner)
+            match_repository.save(match)
             first_period_goals = generate_goals(match, home_first_scorers, away_first_scorers, 1)
             second_period_goals = generate_goals(match, home_second_scorers, away_second_scorers, 2)
             third_period_goals = generate_goals(match, home_third_scorers, away_third_scorers, 3)
@@ -85,6 +85,7 @@ def generate_goalscorers(team, goals):
 def generate_goals(match, home_players, away_players, period):
     goals = []
     for player in home_players:
+        pdb.set_trace()
         goal = Goal(match, player, period)
         goal_repository.save(goal)
         goals.append(goal)
