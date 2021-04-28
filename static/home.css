@@ -1,0 +1,10 @@
+#content-home {
+    min-height: 100vh;
+    min-width: 100vh;
+    border-left: 1px solid #254E70;
+    padding-left: 25px;
+    background-image: url(homescreen.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: auto;
+  }

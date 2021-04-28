@@ -1,7 +1,20 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h1>NHL Fantasy League</h1>
+<main class="flex flex--row">
+    <nav>
+        {% for team in teams|sort(attribute='name') %}
+        {% if team.id != 17 %}
+        <ul>
+            <li>
+            <a href="/teams/{{ team.id }}"> {{team.name}} </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </nav>
+    <section id="content-home"></section>
 
-<p>Create your own Fantasy NHL League!</p>
+    </section>
+</main>
 {% endblock %}
