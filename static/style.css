@@ -2,10 +2,40 @@
 body {
     background-size: cover;
     background-repeat: no-repeat;
-    color: black;
+    background-color: black;
+    color: white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     padding: 0px;
     margin: 0px;
+  }
+
+  body > header {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    border-bottom: 2px solid white;
+  }
+  
+  body > header > h1 {
+    color: white;
+    text-align: center;
+  }
+  
+  body > header > nav > ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+  
+  body > header > nav > ul > li > a {
+    margin-right: 8px;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -21,7 +51,7 @@ body {
   }
   
   a, a:link, a:visited {
-    color: #0094C6;
+    color: white;
     text-decoration: none;
   }
   
@@ -30,6 +60,7 @@ body {
   }
   
   nav {
+    background-color: black;
     padding: 0px;
     margin: 0px;
     padding-right: 25px;
@@ -61,7 +92,7 @@ body {
   #content {
     min-height: 100vh;
     min-width: 100vh;
-    border-left: 1px solid #254E70;
+    border-left: 4px solid white;
     padding-left: 25px;
     background-image: url(background.png);
     background-repeat: no-repeat;
