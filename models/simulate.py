@@ -8,13 +8,6 @@ import repositories.player_repository as player_repository
 import repositories.match_repository as match_repository
 
 
-first_period_goals = 0
-first_period_scorers = []
-second_period_goals = 0
-second_period_scorers = []
-third_period_goals = 0
-third_period_scorers = []
-
 def generator(teams):
     random.shuffle(teams)
     n = len(teams)
@@ -34,12 +27,18 @@ def generator(teams):
     return fixtures
 
 def simulate(fixtures):
+    first_period_goals = 0
+    first_period_scorers = []
+    second_period_goals = 0
+    second_period_scorers = []
+    third_period_goals = 0
+    third_period_scorers = []
     for fixture in fixtures:
         for game in fixture:
             (home_id, away_id) = game
             home_team_id = int(home_id)
             home_team = team_repository.select(home_team_id)
-            generate_score(home_team)
+            generate_score(home_team, first_period_goals, first_period_scorers, second_period_goals, second_period_scorers, third_period_goals, third_period_scorers)
             home_first_goals = first_period_goals
             home_first_scorers = first_period_scorers
             home_second_goals = second_period_goals
@@ -50,7 +49,7 @@ def simulate(fixtures):
 
             away_team_id = int(away_id)
             away_team = team_repository.select(away_team_id)
-            generate_score(away_team)
+            generate_score(away_team, first_period_goals, first_period_scorers, second_period_goals, second_period_scorers, third_period_goals, third_period_scorers)
             away_first_goals = first_period_goals
             away_first_scorers = first_period_scorers
             away_second_goals = second_period_goals
@@ -78,9 +77,9 @@ def simulate(fixtures):
     return match
 
 # Make generate_score communicate with simulate
-def generate_score(team):
+def generate_score(team, first_period_goals, first_period_scorers, second_period_goals, second_period_scorers, third_period_goals, third_period_scorers):
     players = team_repository.players(team)
-    potential_score = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 3, 0, 0, 4]
+    potential_score = [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 0, 2, 2, 0, 2, 0, 3, 0, 0, 3, 0, 3, 4, 0, 4, 0, 4]
     potential_goalscorer = []
     for player in players:
         if player.position == "Defence":
@@ -105,28 +104,28 @@ def generate_score(team):
     first_period_scorers = []
     if first_period_goals == 1:
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
     elif first_period_goals == 2:
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
     elif first_period_goals == 3:
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
     elif first_period_goals == 4:
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
-        first_period_scorers.append(scorer)
+        first_period_scorers.append(scorer.id)
 
     second_period_goals = random.choice(potential_score)
     second_period_scorers = []
@@ -182,4 +181,6 @@ def generate_score(team):
         scorer = random.choice(potential_goalscorer)
         third_period_scorers.append(scorer.id)
 
-    return first_period_goals, second_period_goals, third_period_goals, first_period_scorers, second_period_scorers, third_period_scorers
+        pdb.set_trace()
+
+        return first_period_goals, second_period_goals, third_period_goals, first_period_scorers, second_period_scorers, third_period_scorers
