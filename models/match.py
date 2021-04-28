@@ -1,3 +1,4 @@
+import random
 class Match:
 
     def __init__(self, home_team, home_first_goals, str_home_first_scorers, home_second_goals, str_home_second_scorers, home_third_goals, str_home_third_scorers, home_team_score, away_team, away_first_goals, str_away_first_scorers, away_second_goals, str_away_second_scorers, away_third_goals, str_away_third_scorers, away_team_score, winner, id=None):
@@ -19,3 +20,21 @@ class Match:
         self.away_team_score = away_team_score
         self.winner = winner
         self.id = id
+
+    def generate_fixtures(self, teams):
+        random.shuffle(teams)
+        n = len(teams)
+        matches = []
+        fixtures = []
+        return_matches = []
+        for fixture in range(1, n):
+            for i in range(n//2):
+                matches.append((teams[i], teams[n - 1 - i]))
+                return_matches.append((teams[n - 1 - i], teams[i]))
+            teams.insert(1, teams.pop())
+            fixtures.insert(len(fixtures)//2, matches)
+            fixtures.append(return_matches)
+            matches = []
+            return_matches = []
+
+        return fixtures

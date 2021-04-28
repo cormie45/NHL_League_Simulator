@@ -41,7 +41,7 @@ def players(team):
     results = run_sql(sql, values)
 
     for row in results:
-        player = Player(row['first_name'], row['last_name'], row['age'], row['team_id'], row['position'], row['points'], row['id'])
+        player = Player(row['first_name'], row['last_name'], row['age'], team, row['position'], row['points'], row['id'])
         players.append(player)
     return players
 

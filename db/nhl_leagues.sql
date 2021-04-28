@@ -1,8 +1,7 @@
+DROP TABLE IF EXISTS goals;
 DROP TABLE IF EXISTS matches;
 DROP TABLE IF EXISTS players;
 DROP TABLE IF EXISTS teams;
-
--- DROP TABLE IF EXISTS leagues;
 
 CREATE TABLE teams (
     name VARCHAR(255),
@@ -43,6 +42,8 @@ CREATE TABLE matches (
     id SERIAL PRIMARY KEY
 );
 
--- CREATE TABLE leagues (
+CREATE TABLE goals (
+
+);
 
 -- );

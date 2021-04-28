@@ -2,7 +2,7 @@ from flask import Blueprint, Flask, render_template, redirect, request
 from models.match import Match
 from models.team import Team
 from models.player import Player
-from models.simulate import generator, simulate
+from models.simulate import generate_fixtures, simulate_league
 import repositories.match_repository as match_repository
 import repositories.team_repository as team_repository
 import repositories.player_repository as player_repository
@@ -39,7 +39,7 @@ def run_season():
     team_16 = request.form['team16']
 
     teams = [team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8, team_9, team_10, team_11, team_12, team_13, team_14, team_15, team_16]
-    fixtures = generator(teams)
-    results = simulate(fixtures)
+    fixtures = generate_fixtures(teams)
+    results = simulate_league(fixtures)
 
     return render_template("matches/run.html", fixtures=fixtures, results=results)
