@@ -38,7 +38,8 @@ CREATE TABLE matches (
 CREATE TABLE goals (
     id SERIAL PRIMARY KEY,
     match_id SERIAL REFERENCES matches(id),
-    player_id SERIAL REFERENCES players(id)
+    player_id SERIAL REFERENCES players(id),
+    period INT
 );
 
 -- );

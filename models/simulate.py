@@ -3,6 +3,8 @@ import random
 from models.team import Team
 from models.player import Player
 from models.match import Match
+from models.goal import Goal
+import repositories.goal_repository as goal_repository
 import repositories.team_repository as team_repository
 import repositories.player_repository as player_repository
 import repositories.match_repository as match_repository
@@ -60,6 +62,9 @@ def simulate_league(fixtures):
             
             match = Match(home_team, home_first_goals, home_first_scorers, home_second_goals, home_second_scorers, home_third_goals, home_third_scorers, home_team_score, away_team, away_first_goals, away_first_scorers, away_second_goals, away_second_scorers, away_third_goals, away_third_scorers, away_team_score, winner)
             # match_repository.save(match)
+            first_period_goals = generate_goals(match, home_first_scorers, away_first_scorers, 1)
+            second_period_goals = generate_goals(match, home_second_scorers, away_second_scorers, 2)
+            third_period_goals = generate_goals(match, home_third_scorers, away_third_scorers, 3)
             all_matches.append(match)
     pdb.set_trace()
     return all_matches
@@ -76,3 +81,7 @@ def generate_goalscorers(team, goals):
         scorer.points += 1
         player_repository.update(scorer)
     return scorers
+
+def generate_goals(match, home_players, away_players, period):
+    for player in home_players:
+        goal = G
