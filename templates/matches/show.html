@@ -17,11 +17,31 @@
             <h2>{{ match.home_team.name }} {{ match.home_team_score }} Vs {{ match.away_team_score }} {{ match.away_team.name }}</h2>
             <br><br>
             <h3>1st Period: {{ match.home_team.name }} - {{ match.home_first_goals }} | {{ match.away_team.name }} - {{ match.away_first_goals }}</h3>
+            {% for goal in fpg %}
+            <table>
+                <tr>
+                    <td>{{ goal.player.first_name }} {{ goal.player.last_name }} - {{ goal.player.team.name }}</td>
+                </tr>
+            </table>
+            {% endfor %}
             <br><br>
             <h3>2nd Period: {{ match.home_team.name }} - {{ match.home_second_goals }} | {{ match.away_team.name }} - {{ match.away_second_goals }}</h3>
+            {% for goal in spg %}
+            <table>
+                <tr>
+                    <td>{{ goal.player.first_name }} {{ goal.player.last_name }} - {{ goal.player.team.name }}</td>
+                </tr>
+            </table>
+            {% endfor %}
             <br><br>
             <h3>3rd Period: {{ match.home_team.name }} - {{ match.home_third_goals }} | {{ match.away_team.name }} - {{ match.away_third_goals }}</h3>
-            <br><br><br>
+            {% for goal in tpg %}
+            <table>
+                <tr>
+                    <td>{{ goal.player.first_name }} {{ goal.player.last_name }} - {{ goal.player.team.name }}</td>
+                </tr>
+            </table>
+            {% endfor %}
     </section> 
 </main>
 {% endblock %}

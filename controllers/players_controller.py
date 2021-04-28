@@ -20,7 +20,8 @@ def show_player(id):
 
 @players_blueprint.route("/players/new")
 def new_player():
-    return render_template("players/new.html")
+    teams = team_repository.select_all()
+    return render_template("players/new.html", teams=teams)
 
 @players_blueprint.route("/players", methods=['POST'])
 def create_player():
@@ -43,14 +44,15 @@ def edit_player(id):
 
 @players_blueprint.route("/players/<id>", methods=["POST"])
 def update_player(id):
+    player = player_repository.select(id)
+    team = team_repository.select(player.team.id)
     first_name = request.form['newfirstname']
     last_name = request.form['newlastname']
     age = request.form['newage']
     player_age = int(age)
-    unattached = team_repository.select(17)
     position = request.form['newposition']
     points = 0
-    player = Player(first_name, last_name, player_age, unattached, position, points, id)
+    player = Player(first_name, last_name, player_age, team, position, points, id)
     player_repository.update(player)
     return redirect("/players")
 

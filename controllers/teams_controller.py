@@ -105,8 +105,10 @@ def create_team():
 
 @teams_blueprint.route("/teams/<id>/edit")
 def edit_team(id):
-    team = team_repository.select(id)
-    return render_template("teams/edit.html", team=team)
+    selected = team_repository.select(id)
+    teams = team_repository.select_all()
+
+    return render_template("teams/edit.html", selected=selected, teams=teams)
 
 @teams_blueprint.route("/teams/<id>", methods=['POST'])
 def update_team(id):

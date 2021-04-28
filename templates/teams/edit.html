@@ -1,23 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/teams" method="POST">
-    <div class="newname">
-        <label for="newname">Team Name:</label>
-        <input type="text" name="newname" id="newname" value="{{ team.name }}">
-    </div>
-    <div class="newcoach">
-        <label for="newcoach">Head Coach:</label>
-        <input type="text" name="newcoach" id="newcoach" value="{{ team.coach }}">
-    </div>
-    <div class="newstadium">
-        <label for="newstadium">Stadium:</label>
-        <input type="text" name="newstadium" id="newstadium" value="{{ team.stadium }}">
-    </div>
-    <div class="newcity">
-        <label for="newcity">City:</label>
-        <input type="text" name="newcity" id="newcity" value="{{ team.city }}">
-    </div>
-    <input type="submit" value="Update Team">
-</form>
+<main class="flex flex--row">
+    <nav>
+        {% for team in teams|sort(attribute='name') %}
+        {% if team.id != 17 %}
+        <ul>
+            <li>
+            <a href="/teams/{{ team.id }}"> {{team.name}} </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </nav>
+    <section id="content">
+        <form action="/teams" method="POST">
+        <div class="newname">
+            <label for="newname">Team Name:</label>
+            <input type="text" name="newname" id="newname" value="{{ selected.name }}">
+        </div>
+        <div class="newcoach">
+            <label for="newcoach">Head Coach:</label>
+            <input type="text" name="newcoach" id="newcoach" value="{{ selected.coach }}">
+        </div>
+        <div class="newstadium">
+            <label for="newstadium">Stadium:</label>
+            <input type="text" name="newstadium" id="newstadium" value="{{ selected.stadium }}">
+        </div>
+        <div class="newcity">
+            <label for="newcity">City:</label>
+            <input type="text" name="newcity" id="newcity" value="{{ selected.city }}">
+        </div>
+        <input type="submit" value="Update Team">
+    </form>
+    </section> 
+</main>    
 {% endblock %}

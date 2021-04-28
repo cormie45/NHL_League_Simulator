@@ -14,7 +14,13 @@
       {% endfor %}
   </nav>
   <section id="content">
-
+    {% for player in players %}
+    <table>
+      <tr>
+          <td><a href="/players/{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</a></td>
+      </tr>
+  </table>
+  {% endfor %}
   </section> 
 </main>
 {% endblock %}

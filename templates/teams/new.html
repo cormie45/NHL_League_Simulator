@@ -1,122 +1,171 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/teams" method="POST">
-    <div class="name">
-        <label for="name">Team Name:</label>
-        <input type="text" name="name" id="name">
-    </div>
-    <div class="coach">
-        <label for="coach">Head Coach:</label>
-        <input type="text" name="coach" id="coach">
-    </div>
-    <div class="stadium">
-        <label for="stadium">Stadium:</label>
-        <input type="text" name="stadium" id="stadium">
-    </div>
-    <div class="city">
-        <label for="city">City:</label>
-        <input type="text" name="city" id="city">
-    </div>
-        <br><br>
-
-    <label for="startinggoalkeeper">Starting Goalkeeper</label>
-    <select name="startinggoalkeeper" id="startinggoalkeeper" required>
-        {% for player in players %}
-            {% if player.position == "Goalkeeper" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
+<main class="flex flex--row">
+    <nav>
+        {% for team in teams|sort(attribute='name') %}
+        {% if team.id != 17 %}
+        <ul>
+            <li>
+            <a href="/teams/{{ team.id }}"> {{team.name}} </a>
+            </li>
+        </ul>
+        {% endif %}
         {% endfor %}
-    </select>
-    <label for="backupgoalkeeper">Backup Goalkeeper</label>
-    <select name="backupgoalkeeper" id="backupgoalkeeper" required>
-        {% for player in players %}
-            {% if player.position == "Goalkeeper" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="defence1">1st Line Defence</label>
-    <select name="defence1" id="defence1" required>
-        {% for player in players %}
-            {% if player.position == "Defence" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="defence2">1st Line Defence</label>
-    <select name="defence2" id="defence2" required>
-        {% for player in players %}
-            {% if player.position == "Defence" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="defence3">2nd Line Defence</label>
-    <select name="defence3" id="defence3" required>
-        {% for player in players %}
-            {% if player.position == "Defence" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="defence4">2nd Line Defence</label>
-    <select name="defence4" id="defence4" required>
-        {% for player in players %}
-            {% if player.position == "Defence" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="rightwing1">1st Line Right Wing</label>
-    <select name="rightwing1" id="rightwing1" required>
-        {% for player in players %}
-            {% if player.position == "Right Wing" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="rightwing2">2nd Line Right Wing</label>
-    <select name="rightwing2" id="rightwing2" required>
-        {% for player in players %}
-            {% if player.position == "Right Wing" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="leftwing1">1st Line Left Wing</label>
-    <select name="leftwing1" id="leftwing1" required>
-        {% for player in players %}
-            {% if player.position == "Left Wing" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="leftwing2">2nd Line Left Wing</label>
-    <select name="leftwing2" id="leftwing2" required>
-        {% for player in players %}
-            {% if player.position == "Left Wing" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="center1">1st Line Center</label>
-    <select name="center1" id="center1" required>
-        {% for player in players %}
-            {% if player.position == "Center" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <label for="center2">2nd Line Center</label>
-    <select name="center2" id="center2" required>
-        {% for player in players %}
-            {% if player.position == "Center" %}
-                <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
-    <br><br>
-    <input type="submit" value="Create Team">
-</form>
+    </nav>
+    <section id="content">
+        <form action="/teams" method="POST">
+            <div class="name">
+                <label for="name">Team Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="coach">
+                <label for="coach">Head Coach:</label>
+                <input type="text" name="coach" id="coach">
+            </div>
+            <div class="stadium">
+                <label for="stadium">Stadium:</label>
+                <input type="text" name="stadium" id="stadium">
+            </div>
+            <div class="city">
+                <label for="city">City:</label>
+                <input type="text" name="city" id="city">
+            </div>
+                <br><br>
+            <div>
+            <label for="startinggoalkeeper">Starting Goalkeeper</label>
+            <select name="startinggoalkeeper" id="startinggoalkeeper" required>
+                {% for player in players %}
+                    {% if player.position == "Goalkeeper" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="backupgoalkeeper">Backup Goalkeeper</label>
+            <select name="backupgoalkeeper" id="backupgoalkeeper" required>
+                {% for player in players %}
+                    {% if player.position == "Goalkeeper" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="defence1">1st Line Defence</label>
+            <select name="defence1" id="defence1" required>
+                {% for player in players %}
+                    {% if player.position == "Defence" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="defence2">1st Line Defence</label>
+            <select name="defence2" id="defence2" required>
+                {% for player in players %}
+                    {% if player.position == "Defence" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="defence3">2nd Line Defence</label>
+            <select name="defence3" id="defence3" required>
+                {% for player in players %}
+                    {% if player.position == "Defence" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="defence4">2nd Line Defence</label>
+            <select name="defence4" id="defence4" required>
+                {% for player in players %}
+                    {% if player.position == "Defence" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="rightwing1">1st Line Right Wing</label>
+            <select name="rightwing1" id="rightwing1" required>
+                {% for player in players %}
+                    {% if player.position == "Right Wing" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="rightwing2">2nd Line Right Wing</label>
+            <select name="rightwing2" id="rightwing2" required>
+                {% for player in players %}
+                    {% if player.position == "Right Wing" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="leftwing1">1st Line Left Wing</label>
+            <select name="leftwing1" id="leftwing1" required>
+                {% for player in players %}
+                    {% if player.position == "Left Wing" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="leftwing2">2nd Line Left Wing</label>
+            <select name="leftwing2" id="leftwing2" required>
+                {% for player in players %}
+                    {% if player.position == "Left Wing" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="center1">1st Line Center</label>
+            <select name="center1" id="center1" required>
+                {% for player in players %}
+                    {% if player.position == "Center" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div>
+            <label for="center2">2nd Line Center</label>
+            <select name="center2" id="center2" required>
+                {% for player in players %}
+                    {% if player.position == "Center" %}
+                        <option value="{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            </div>
+            <br><br>
+            <input type="submit" value="Create Team">
+        </form>
+    </section> 
+</main>
 {% endblock %}
