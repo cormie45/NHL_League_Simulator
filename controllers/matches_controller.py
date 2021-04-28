@@ -6,6 +6,7 @@ from models.simulate import generate_fixtures, simulate_league
 import repositories.match_repository as match_repository
 import repositories.team_repository as team_repository
 import repositories.player_repository as player_repository
+import repositories.goal_repository as goal_repository
 
 matches_blueprint = Blueprint("matches", __name__)
 
@@ -18,6 +19,16 @@ def matches():
 def setup_season():
     teams = team_repository.select_all()
     return render_template("matches/setup.html", teams=teams)
+
+@matches_blueprint.route("/matches/<id>")
+def show_match(id):
+    match = match_repository.select(id)
+    teams = team_repository.select_all()
+    fpg = match_repository.goals(match, 1)
+    spg = match_repository.goals(match, 2)
+    tpg = match_repository.goals(match, 3)
+
+    return render_template("matches/show.html", match=match, teams=teams, fpg=fpg, spg=spg, tpg=tpg)
 
 @matches_blueprint.route("/matches/run", methods=['POST'])
 def run_season():

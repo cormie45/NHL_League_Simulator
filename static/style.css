@@ -37,6 +37,12 @@ body {
   body > header > nav > ul > li > a {
     margin-right: 8px;
   }
+
+  body > footer {
+    padding: 32px;
+    background-color:black;
+    border-top: 2px solid white;
+  }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: "Lucida Console", Monaco, monospace;
@@ -51,12 +57,13 @@ body {
   }
   
   a, a:link, a:visited {
-    color: white;
+    color: turquoise;
     text-decoration: none;
+    padding: 5px;
   }
   
   a:hover, a:active, a:focus {
-    color: #8EE3EF;
+    color: darkslateblue;
   }
   
   nav {
@@ -72,11 +79,11 @@ body {
   }
   
   ul {
-    padding: 0px;
+    padding: 2px;
     margin: 0px;
     list-style-type: none;
   }
-  
+
   main {
     padding: 25px;
   }
@@ -90,13 +97,25 @@ body {
   }
   
   #content {
-    min-height: 100vh;
-    min-width: 100vh;
+    min-height: 75vh;
+    min-width: 75vh;
     border-left: 4px solid white;
-    padding-left: 25px;
+    padding-left: 15%;
     background-image: url(background.png);
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: right top;
     overflow: auto;
   }
   
+ .team {
+   text-align: center;
+ }
+
+ .players {
+   text-align: left;
+ }
+
+ .edit {
+   float: right;
+ }

@@ -120,9 +120,9 @@ player_45 = Player("Josh", "Manson", 29, team_4, "Defence", 0)
 player_repository.save(player_45)
 player_46 = Player("Jamie", "Drysdale", 19, team_4, "Defence", 0)
 player_repository.save(player_46)
-player_47 = Player("John", "Gibson", 27, team_4, "Defence", 0)
+player_47 = Player("John", "Gibson", 27, team_4, "Goalkeeper", 0)
 player_repository.save(player_47)
-player_48 = Player("Anthony", "Stolarz", 27, team_4, "Defence", 0)
+player_48 = Player("Anthony", "Stolarz", 27, team_4, "Goalkeeper", 0)
 player_repository.save(player_48)
 
 # Discover Central

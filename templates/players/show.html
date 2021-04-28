@@ -1,14 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{ player.first_name }} {{ player.last_name }}</h2>
-<h4>{{ player.age }}</h4>
-<h4>{{ player.team.name }}</h4>
-<h4>{{ player.position }}</h4>
-<h4>{{ player.points }}</h4>
+<main class="flex flex--row">
+    <nav>
+        {% for team in teams|sort(attribute='name') %}
+        {% if team.id != 17 %}
+        <ul>
+            <li>
+            <a href="/teams/{{ team.id }}"> {{team.name}} </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </nav>
+    <section id="content">
+        <p>NAME : <h2>{{ player.first_name }} {{ player.last_name }}</h2></p>
+        <br><br>
+        <p>AGE : <h2>{{ player.age }}</h2></p>
+        <br><br>
+        <p>POSITION : <h2>{{ player.position }}</h2></p>
+        <br><br>
+        {% if player.position != "Goalkeeper" %}
+        <p>POINTS : <h2>{{ player.points }}</h2></p>
+        {% endif %}
+        <div class="edit">
+            <p><a href="/players/{{player.id}}/edit">Edit</a></p>
+            <form action="/players/{{ player.id }}/delete" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    </section> 
+</main>
 
-<p><a href="/players/{{player.id}}/edit">Edit</a></p>
-<form action="/players/{{ player.id }}/delete" method="POST">
-    <input type="submit" value="Delete">
-</form>
+
 {% endblock %}

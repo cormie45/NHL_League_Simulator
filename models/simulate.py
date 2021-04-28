@@ -73,7 +73,7 @@ def generate_score():
     score = random.choice(potential_score)
     return score
 
-def generate_goalscorers(team, goals):
+def generate_goalscorers(team, goals_scored):
     players = team_repository.players(team)
     possible_scorers = []
     for player in players:
@@ -90,7 +90,7 @@ def generate_goalscorers(team, goals):
             possible_scorers.append(player)
             possible_scorers.append(player)
 
-    scorers = [random.choice(possible_scorers) for i in range(goals)]
+    scorers = [random.choice(possible_scorers) for i in range(goals_scored)]
     for scorer in scorers:
         scorer.points += 1
         player_repository.update(scorer)

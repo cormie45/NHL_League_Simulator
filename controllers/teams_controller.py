@@ -3,6 +3,7 @@ from flask import Blueprint, Flask, render_template, redirect, request
 from models.team import Team
 import repositories.team_repository as team_repository
 import repositories.player_repository as player_repository
+import repositories.match_repository as match_repository
 
 teams_blueprint = Blueprint("teams", __name__)
 
@@ -13,15 +14,24 @@ def teams():
 
 @teams_blueprint.route("/teams/<id>")
 def show_team(id):
-    team = team_repository.select(id)
-    players = team_repository.players(team)
-    return render_template("teams/show.html", team=team, players=players)
+    teams = team_repository.select_all()
+    selected = team_repository.select(id)
+    players = team_repository.players(selected)
+    return render_template("teams/show.html", selected=selected, players=players, teams=teams)
+
+@teams_blueprint.route("/teams/<id>/history")
+def show_history(id):
+    teams = team_repository.select_all()
+    selected = team_repository.select(id)
+    matches = match_repository.select_all()
+    return render_template("teams/history.html", selected=selected, teams=teams, matches=matches)
 
 @teams_blueprint.route("/teams/new")
 def new_team():
+    teams = team_repository.select_all()
     unattached = team_repository.select(17)
     players = team_repository.players(unattached)
-    return render_template("teams/new.html", players=players)
+    return render_template("teams/new.html", players=players, teams=teams)
 
 @teams_blueprint.route("/teams", methods=['POST'])
 def create_team():
@@ -116,6 +126,5 @@ def delete_team(id):
     for player in players:
         player.team = new_team
         player_repository.update(player)
-    # pdb.set_trace()
     team_repository.delete(id)
     return redirect("/teams")

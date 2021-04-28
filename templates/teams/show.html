@@ -1,17 +1,79 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{ team.name }}</h2>
-
-<h3>Players:</h3>
-<ul>
-    {% for player in players %}
-    <li>{{ player.first_name }} {{ player.last_name }}</li>
-    {% endfor %}
-</ul>
-<br><br>
-<p><a href="/teams/{{team.id}}/edit">Edit</a></p>
-<form action="/teams/{{ team.id }}/delete" method="POST">
-    <input type="submit" value="Delete">
-</form>
+<main class="flex flex--row">
+    <nav>
+        {% for team in teams|sort(attribute='name') %}
+        {% if team.id != 17 %}
+        <ul>
+            <li>
+            <a href="/teams/{{ team.id }}"> {{team.name}} </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </nav>
+    <section id="content">
+        <div class="team">
+            <h2>{{ selected.name }}</h2>
+            <h3>Head Coach - {{ selected.coach }}</h3>
+            <h3>Stadium - {{ selected.stadium }}</h3>
+            <h3>City - {{ selected.city }}</h3>
+            <br><br>
+            <a href="/teams/{{ selected.id }}/history">View team results history</a>
+        </div>
+        <div class="players">
+            <h2>Goalkeepers</h2>
+            
+            {% for player in players %}
+            {% if player.position == "Goalkeeper" %}
+            <table>
+                <tr>
+                    <td><a href="/players/{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</a></td>
+                </tr>
+            </table>
+            {% endif %}
+            {% endfor %}
+            <br><br>
+            <h2>Defenders</h2>
+            {% for player in players %}
+            {% if player.position == "Defence" %}
+            <table>
+                <tr>
+                    <td><a href="/players/{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</a></td>
+                </tr>
+            </table>
+            {% endif %}
+            {% endfor %}
+            <br><br>
+            <h2>Wingers</h2>
+            {% for player in players %}
+            {% if player.position == "Left Wing" or player.position == "Right Wing" %}
+            <table>
+                <tr>
+                    <td><a href="/players/{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</a></td>
+                </tr>
+            </table>
+            {% endif %}
+            {% endfor %}
+            <br><br>
+            <h2>Center Forwards</h2>
+            {% for player in players %}
+            {% if player.position == "Center" %}
+            <table>
+                <tr>
+                    <td><a href="/players/{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</a></td>
+                </tr>
+            </table>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="edit">
+            <p><a href="/teams/{{ selected.id }}/edit">Edit</a></p>
+            <form action="/teams/{{ selected.id }}/delete" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    </section>
+</main>
 {% endblock %}

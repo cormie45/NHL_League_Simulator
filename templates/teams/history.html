@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="flex flex--row">
+    <nav>
+        {% for team in teams|sort(attribute='name') %}
+        {% if team.id != 17 %}
+        <ul>
+            <li>
+            <a href="/teams/{{ team.id }}"> {{team.name}} </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </nav>
+    <section id="content">
+        <h2>{{ selected.name }} Results History</h2>
+        <br><br><br>
+        {% for match in matches %}
+        {% if match.home_team.id == selected.id or match.away_team.id == selected.id %}
+        <table class="results">
+            <tr>
+                <a href="/matches/{{ match.id }}">{{ match.home_team.name }} {{ match.home_team_score }} Vs {{ match.away_team_score }} {{ match.away_team.name }}</a>
+            </tr>
+        </table>
+        {% endif %}
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
