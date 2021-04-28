@@ -104,83 +104,141 @@ def generate_score(team, first_period_goals, first_period_scorers, second_period
     first_period_scorers = []
     if first_period_goals == 1:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
     elif first_period_goals == 2:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
     elif first_period_goals == 3:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
     elif first_period_goals == 4:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         first_period_scorers.append(scorer.id)
 
+    second_period_goals = 0
     second_period_goals = random.choice(potential_score)
     second_period_scorers = []
     if second_period_goals == 1:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
     elif second_period_goals == 2:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
     elif second_period_goals == 3:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
     elif second_period_goals == 4:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         second_period_scorers.append(scorer.id)
 
+    third_period_goals = 0
     third_period_goals = random.choice(potential_score)
     third_period_scorers = []
     if third_period_goals == 1:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
     elif third_period_goals == 2:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
         third_period_scorers.append(scorer.id)
     elif third_period_goals == 3:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
     elif third_period_goals == 4:
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
         scorer = random.choice(potential_goalscorer)
+        scorer.points += 1
+        player_repository.update(scorer)
         third_period_scorers.append(scorer.id)
-
-        pdb.set_trace()
 
         return first_period_goals, second_period_goals, third_period_goals, first_period_scorers, second_period_scorers, third_period_scorers
