@@ -53,4 +53,4 @@ def run_season():
     fixtures = generate_fixtures(teams)
     results = simulate_league(fixtures)
 
-    return redirect("/matches")
+    return redirect("/")

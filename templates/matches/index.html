@@ -1,21 +1,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Anaheim Ducks:</h2>
-<h3>Home Games:</h3>
-{% for match in matches %}
-{% if match.home_team.name == "Anaheim Ducks" %}
-<tr>
-    <td><a href="/matches/{{ match.id }}"> {{match.home_team.name}} Vs {{ match.away_team.name }}</a></td>
-</tr>
-{% endif %}
-{% endfor %}
-<h3>Away Games:</h3>
-{% for match in matches %}
-{% if match.away_team.name == "Anaheim Ducks" %}
-<tr>
-    <td><a href="/matches/{{ match.id }}"> {{match.home_team.name}} Vs {{ match.away_team.name }}</a></td>
-</tr>
-{% endif %}
-{% endfor %}
+
 {% endblock %}

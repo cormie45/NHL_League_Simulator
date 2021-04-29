@@ -42,5 +42,3 @@ CREATE TABLE goals (
     player_id SERIAL REFERENCES players(id),
     period INT
 );
-
--- );
