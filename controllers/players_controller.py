@@ -54,9 +54,9 @@ def update_player(id):
     points = 0
     player = Player(first_name, last_name, player_age, team, position, points, id)
     player_repository.update(player)
-    return redirect("/players")
+    return redirect("/")
 
 @players_blueprint.route("/players/<id>/delete", methods=["POST"])
 def delete_player(id):
     player_repository.delete(id)
-    return redirect("/players")
+    return redirect("/")

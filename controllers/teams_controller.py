@@ -101,7 +101,7 @@ def create_team():
     center_2 = player_repository.select(int(center_2_id))
     center_2.team = new_team
     player_repository.update(center_2)
-    return redirect("/teams")
+    return redirect("/")
 
 @teams_blueprint.route("/teams/<id>/edit")
 def edit_team(id):
@@ -129,4 +129,4 @@ def delete_team(id):
         player.team = new_team
         player_repository.update(player)
     team_repository.delete(id)
-    return redirect("/teams")
+    return redirect("/")
